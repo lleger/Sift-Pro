@@ -1,0 +1,5 @@
+<p>Tweet: <%= @tweet %></p>
+
+<p>Offensive words: <%= @offensive_words.join(", ") %></p>
+
+<p><%= highlight(@tweet, @offensive_words) %></p>

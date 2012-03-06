@@ -114,4 +114,16 @@ class AthletesController < ApplicationController
       redirect_to athletes_path, notice: "Authorization failed."
     end
   end
+  
+  def tweet
+    @athlete = Athlete.find(params[:id])
+  end
+  
+  def post
+    @tweet = params[:tweet][:text]
+    @offensive_words = Array.new
+    Athlete::BLACKLIST.each do |naughty|
+      @offensive_words << naughty if @tweet =~ Regexp.new(naughty)
+    end
+  end
 end
