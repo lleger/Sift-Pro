@@ -1,0 +1,27 @@
+<h1>Athlete</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @athlete.name %>
+</p>
+
+<p>
+  <b>Email</b><br>
+  <%= mail_to @athlete.email %>
+</p>
+
+<p>
+  <b>Sport</b><br>
+  <%= @athlete.sport.name %>
+</p>
+
+<p>
+  <b>Connected Twitter Account</b><br>
+  <%= @athlete.token && @athlete.secret ? "Yes" : "No" %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', athletes_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_athlete_path(@athlete), :class => 'btn' %>
+  <%= link_to 'Delete', athlete_path(@athlete), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

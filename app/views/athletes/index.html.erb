@@ -1,0 +1,26 @@
+<h1>Athletes</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Sport</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @athletes.each do |athlete| %>
+      <tr>
+        <td><%= athlete.id %></td>
+        <td><%= link_to athlete.name, athlete_path(athlete) %></td>
+        <td><%= athlete.sport.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_athlete_path(athlete), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', athlete_path(athlete), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_athlete_path, :class => 'btn btn-primary' %>

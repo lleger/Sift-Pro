@@ -1,4 +1,8 @@
 Siftpro::Application.routes.draw do
+  resources :sports
+
+  resources :universities
+
   resources :athletes
 
   root to: "static#home"
