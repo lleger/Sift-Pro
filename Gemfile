@@ -41,3 +41,4 @@ gem 'unicorn'
 gem "heroku"
 gem "foreman"
 gem "twitter_oauth"
+gem "simple_form"

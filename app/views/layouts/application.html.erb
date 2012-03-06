@@ -22,7 +22,7 @@
         <%= link_to "Sift Pro", root_path, class: "brand" %>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Login", "" %></li>
+            <li><%= link_to "Athletes", athletes_path %></li>
           </ul>
         </div>
       </div>
@@ -30,6 +30,13 @@
   </div>
 
   <div class="container">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= msg %>
+      </div>
+    <% end %>
+    
     <div class="row">
       <div class="span12"><%= yield %></div>
     </div>

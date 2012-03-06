@@ -1,4 +1,6 @@
 Siftpro::Application.routes.draw do
+  resources :athletes
+
   root to: "static#home"
 
   # The priority is based upon order of creation:
