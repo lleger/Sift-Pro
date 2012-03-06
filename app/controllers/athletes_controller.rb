@@ -80,4 +80,38 @@ class AthletesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def authorize
+    client = TwitterOAuth::Client.new(
+        consumer_key: TWITTER_CONSUMER_KEY,
+        consumer_secret: TWITTER_CONSUMER_SECRET
+    )
+    request_token = client.request_token(oauth_callback: callback_athlete_url)
+    session[:request_token] = request_token.token
+    session[:request_token_secret] = request_token.secret
+    redirect_to request_token.authorize_url
+  end
+  
+  def callback
+    client = TwitterOAuth::Client.new(
+        consumer_key: TWITTER_CONSUMER_KEY,
+        consumer_secret: TWITTER_CONSUMER_SECRET
+    )
+    access_token = client.authorize(
+      session[:request_token],
+      session[:request_token_secret],
+      :oauth_verifier => params[:oauth_verifier]
+    )
+    if client.authorized?
+      @athlete = Athlete.find(params[:id])
+      @athlete.token = access_token.token
+      @athlete.secret = access_token.secret
+      @athlete.save
+      session[:request_token] = nil
+      session[:request_token_secret] = nil
+      redirect_to @athlete, notice: "Authorization success!"
+    else
+      redirect_to athletes_path, notice: "Authorization failed."
+    end
+  end
 end

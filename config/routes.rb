@@ -3,7 +3,10 @@ Siftpro::Application.routes.draw do
 
   resources :universities
 
-  resources :athletes
+  resources :athletes do
+    get "authorize", on: :member
+    get "callback", on: :member
+  end
 
   root to: "static#home"
 
