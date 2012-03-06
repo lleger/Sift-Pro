@@ -122,7 +122,7 @@ class AthletesController < ApplicationController
   def post
     @tweet = params[:tweet][:text]
     @offensive_words = Array.new
-    Athlete::BLACKLIST.each do |naughty|
+    Blacklist.all.each do |naughty|
       @offensive_words << naughty if @tweet =~ Regexp.new(naughty)
     end
   end
