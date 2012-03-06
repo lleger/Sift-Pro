@@ -1,15 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h1>Sport</h1>
 
 <p>
-  <b>Name:</b>
+  <b>Name</b><br>
   <%= @sport.name %>
 </p>
 
-<p>
-  <b>University:</b>
-  <%= @sport.university_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_sport_path(@sport) %> |
-<%= link_to 'Back', sports_path %>
+<div class="form-actions">
+  <%= link_to 'Back', sports_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_sport_path(@sport), :class => 'btn' %>
+  <%= link_to 'Delete', sport_path(@sport), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

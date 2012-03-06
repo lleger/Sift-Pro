@@ -1,25 +1,26 @@
-<h1>Listing universities</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @universities.each do |university| %>
-  <tr>
-    <td><%= university.name %></td>
-    <td><%= university.location %></td>
-    <td><%= link_to 'Show', university %></td>
-    <td><%= link_to 'Edit', edit_university_path(university) %></td>
-    <td><%= link_to 'Destroy', university, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+<h1>Universities</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @universities.each do |university| %>
+      <tr>
+        <td><%= university.id %></td>
+        <td><%= link_to university.name, university_path(university) %></td>
+        <td><%= university.location %></td>
+        <td>
+          <%= link_to 'Edit', edit_university_path(university), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', university_path(university), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New University', new_university_path %>
+<%= link_to 'New', new_university_path, :class => 'btn btn-primary' %>
