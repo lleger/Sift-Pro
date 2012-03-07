@@ -41,6 +41,7 @@ class SportsController < ApplicationController
   # POST /sports.json
   def create
     @sport = Sport.new(params[:sport])
+    @sport.university = current_university
 
     respond_to do |format|
       if @sport.save

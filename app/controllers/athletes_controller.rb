@@ -2,7 +2,7 @@ class AthletesController < ApplicationController
   # GET /athletes
   # GET /athletes.json
   def index
-    @athletes = Athlete.all
+    @athletes = Athlete.scoped_by_university_id(current_university.id).order("name DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,7 @@ class AthletesController < ApplicationController
   # POST /athletes.json
   def create
     @athlete = Athlete.new(params[:athlete])
+    @athlete.university = current_university
 
     respond_to do |format|
       if @athlete.save

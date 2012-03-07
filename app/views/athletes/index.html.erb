@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Name</th>
       <th>Sport</th>
       <th>Actions</th>
@@ -14,7 +13,6 @@
   <tbody>
     <% @athletes.each do |athlete| %>
       <tr>
-        <td><%= athlete.id %></td>
         <td><%= link_to athlete.name, athlete_path(athlete) %></td>
         <td><%= athlete.sport.name %></td>
         <td>
