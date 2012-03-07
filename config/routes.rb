@@ -1,5 +1,5 @@
 Siftpro::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path_names => { :sign_in => 'login' }, :path => ""
 
   resources :issues
 
@@ -17,6 +17,8 @@ Siftpro::Application.routes.draw do
   end
   
   get "/signup" => "universities#new"
+  get "/about"  => "static#about"
+  get "/pricing"  => "static#pricing"
 
   root to: "static#home"
 

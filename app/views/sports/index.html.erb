@@ -1,4 +1,7 @@
 <h1>Sports</h1>
+
+<% if @sports.present? %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,5 +23,16 @@
     <% end %>
   </tbody>
 </table>
+
+<% else %>
+
+<div class="row" id="empty_content_page">
+  <div class="span12 well">
+    <h1>No sports created.</h1>
+    <p>You haven't added any sports yet. <%= link_to "Add one now.", new_sport_path %></p>
+  </div>
+</div>
+
+<% end %>
 
 <%= link_to 'New', new_sport_path, :class => 'btn btn-primary' %>

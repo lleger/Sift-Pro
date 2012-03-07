@@ -22,13 +22,12 @@
         <%= link_to "Sift Pro", root_path, class: "brand" %>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Universities", universities_path %></li>
-            <li><%= link_to "Dashboard", "" %></li>
-            <li><%= link_to "Issues", issues_path %></li>
-            <li><%= link_to "Sports", sports_path %></li>
-            <li><%= link_to "Athletes", athletes_path %></li>
-            <li><%= link_to "Users", "" %></li>
-            <li><%= link_to "Settings", "" %></li>
+            <li<%= current_class("dashboard") %>><%= link_to "Dashboard", "" %></li>
+            <li<%= current_class("issues") %>><%= link_to "Issues", issues_path %></li>
+            <li<%= current_class("sports") %>><%= link_to "Sports", sports_path %></li>
+            <li<%= current_class("athletes") %>><%= link_to "Athletes", athletes_path %></li>
+            <li<%= current_class("users") %>><%= link_to "Users", "" %></li>
+            <li<%= current_class("settings") %>><%= link_to "Settings", "" %></li>
           </ul>
         </div>
       </div>

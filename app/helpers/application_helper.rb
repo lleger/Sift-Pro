@@ -11,4 +11,12 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  
+  def current_class(page)
+    " class='active'" if controller.controller_name == page
+  end
+  
+  def static_current_page(page)
+    " class='active'" if current_page?(page)
+  end
 end

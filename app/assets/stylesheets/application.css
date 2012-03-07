@@ -12,6 +12,11 @@
  *= require_tree .
 */
 
+#empty_content_page {
+  text-align: center;
+  padding-top: 15px;
+}
+
 footer {
   margin-top: 45px;
   padding: 35px 0 36px;
