@@ -1,4 +1,4 @@
-class Athlete < ActiveRecord::Base
+class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,9 +6,4 @@ class Athlete < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  belongs_to :university
-  belongs_to :sport
-  has_many :issues
-  
-  validates :name, :email, :sport, :university, presence: true
 end
