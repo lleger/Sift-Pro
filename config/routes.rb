@@ -1,4 +1,6 @@
 Siftpro::Application.routes.draw do
+  devise_for :users
+
   resources :issues
 
   resources :sports
