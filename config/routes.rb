@@ -6,10 +6,8 @@ Siftpro::Application.routes.draw do
   get "/signup" => "universities#new"
   get "/features"  => "static#features"
   get "/pricing"  => "static#pricing"
-
-  root to: "static#home"
-
-  authenticate :user do
+  
+  authenticated :user do
     resources :issues, only: [:index, :show]
     resources :sports
     resources :universities, except: [:new, :create]
@@ -23,4 +21,6 @@ Siftpro::Application.routes.draw do
     end    
     root to: "issues#index"
   end
+  
+  root to: "static#home"
 end
