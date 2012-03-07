@@ -1,0 +1,11 @@
+<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f| %>
+  <fieldset>
+    <legend>Forgot your password?</legend>
+
+    <%= f.input :email, :required => true %>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Send me reset password instructions" %>
+    </div>
+  </fieldset>
+<% end %>
