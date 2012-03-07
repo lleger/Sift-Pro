@@ -5,7 +5,9 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+group :development do
+  gem 'mysql2'
+end
 
 group :production do
   gem 'pg'
@@ -45,4 +47,4 @@ gem "heroku"
 gem "foreman"
 gem "twitter_oauth"
 gem "simple_form"
-gem "devise"
+# gem "devise"
