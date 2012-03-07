@@ -22,12 +22,10 @@
         <%= link_to "Sift Pro", root_path, class: "brand" %>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Universities", universities_path %></li>
-            <li><%= link_to "Dashboard", "" %></li>
-            <li><%= link_to "Sports", sports_path %></li>
-            <li><%= link_to "Athletes", athletes_path %></li>
-            <li><%= link_to "Users", "" %></li>
-            <li><%= link_to "Settings", "" %></li>
+            <li><%= link_to "About", "" %></li>
+            <li><%= link_to "Pricing", "" %></li>
+            <li><%= link_to "Sign up", "" %></li>
+            <li><%= link_to "Log in", "" %></li>
           </ul>
         </div>
       </div>
@@ -43,8 +41,7 @@
     <% end %>
     
     <div class="row">
-      <div class="span3"><%= render "layouts/sidebar" %></div>
-      <div class="span9"><%= yield %></div>
+      <div class="span12"><%= yield %></div>
     </div>
     
     <footer>
