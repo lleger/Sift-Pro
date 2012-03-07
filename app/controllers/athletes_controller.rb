@@ -13,7 +13,7 @@ class AthletesController < ApplicationController
   # GET /athletes/1
   # GET /athletes/1.json
   def show
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class AthletesController < ApplicationController
 
   # GET /athletes/1/edit
   def edit
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
   end
 
   # POST /athletes
@@ -57,7 +57,7 @@ class AthletesController < ApplicationController
   # PUT /athletes/1
   # PUT /athletes/1.json
   def update
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
 
     respond_to do |format|
       if @athlete.update_attributes(params[:athlete])
@@ -73,7 +73,7 @@ class AthletesController < ApplicationController
   # DELETE /athletes/1
   # DELETE /athletes/1.json
   def destroy
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
     @athlete.destroy
 
     respond_to do |format|
@@ -104,7 +104,7 @@ class AthletesController < ApplicationController
       :oauth_verifier => params[:oauth_verifier]
     )
     if client.authorized?
-      @athlete = Athlete.find(params[:id])
+      @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
       @athlete.token = access_token.token
       @athlete.secret = access_token.secret
       @athlete.save
@@ -117,7 +117,7 @@ class AthletesController < ApplicationController
   end
   
   def tweet
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
   end
   
   def post
@@ -127,7 +127,7 @@ class AthletesController < ApplicationController
       @offensive_words << naughty if @tweet =~ Regexp.new(naughty)
     end
     
-    @issue = Issue.create(tweet: @tweet, blacklisted_words: @offensive_words.join(", "), university_id: 1, athlete_id: params[:id], approved: false)
+    @issue = Issue.create(tweet: @tweet, blacklisted_words: @offensive_words.join(", "), university_id: current_university.id, athlete_id: params[:id], approved: false)
     @issue.save
   end
 end

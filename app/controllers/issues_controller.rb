@@ -3,13 +3,13 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     if params[:filter] == "open"
-      @issues = Issue.open
+      @issues = Issue.scoped_by_university_id(current_university.id).open
     elsif params[:filter] == "rejected"
-      @issues = Issue.rejected
+      @issues = Issue.scoped_by_university_id(current_university.id).rejected
     elsif params[:filter] == "closed"
-      @issues = Issue.closed
+      @issues = Issue.scoped_by_university_id(current_university.id).closed
     else
-      @issues = Issue.all
+      @issues = Issue.scoped_by_university_id(current_university.id).all
     end
 
     respond_to do |format|
@@ -21,10 +21,10 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
-    @issue = Issue.find(params[:id])
-    @athlete_issues = { open: Issue.open.where(athlete_id: @issue.athlete_id).count, 
-      closed: Issue.closed.where(athlete_id: @issue.athlete_id).count, 
-      rejected: Issue.rejected.where(athlete_id: @issue.athlete_id).count
+    @issue = Issue.scoped_by_university_id(current_university.id).find(params[:id])
+    @athlete_issues = { open: Issue.scoped_by_university_id(current_university.id).open.where(athlete_id: @issue.athlete_id).count, 
+      closed: Issue.scoped_by_university_id(current_university.id).closed.where(athlete_id: @issue.athlete_id).count, 
+      rejected: Issue.scoped_by_university_id(current_university.id).rejected.where(athlete_id: @issue.athlete_id).count
       }
 
     respond_to do |format|
@@ -36,7 +36,7 @@ class IssuesController < ApplicationController
   # PUT /issues/1
   # PUT /issues/1.json
   def update
-    @issue = Issue.find(params[:id])
+    @issue = Issue.scoped_by_university_id(current_university.id).find(params[:id])
 
     respond_to do |format|
       if @issue.update_attributes(params[:issue])
@@ -52,7 +52,7 @@ class IssuesController < ApplicationController
   # DELETE /issues/1
   # DELETE /issues/1.json
   def destroy
-    @issue = Issue.find(params[:id])
+    @issue = Issue.scoped_by_university_id(current_university.id).find(params[:id])
     @issue.destroy
 
     respond_to do |format|

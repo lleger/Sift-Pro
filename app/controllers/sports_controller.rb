@@ -2,7 +2,7 @@ class SportsController < ApplicationController
   # GET /sports
   # GET /sports.json
   def index
-    @sports = Sport.all
+    @sports = Sport.scoped_by_university_id(current_university.id).order("name DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class SportsController < ApplicationController
   # GET /sports/1
   # GET /sports/1.json
   def show
-    @sport = Sport.find(params[:id])
+    @sport = Sport.scoped_by_university_id(current_university.id).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class SportsController < ApplicationController
 
   # GET /sports/1/edit
   def edit
-    @sport = Sport.find(params[:id])
+    @sport = Sport.scoped_by_university_id(current_university.id).find(params[:id])
   end
 
   # POST /sports
@@ -57,7 +57,7 @@ class SportsController < ApplicationController
   # PUT /sports/1
   # PUT /sports/1.json
   def update
-    @sport = Sport.find(params[:id])
+    @sport = Sport.scoped_by_university_id(current_university.id).find(params[:id])
 
     respond_to do |format|
       if @sport.update_attributes(params[:sport])
@@ -73,7 +73,7 @@ class SportsController < ApplicationController
   # DELETE /sports/1
   # DELETE /sports/1.json
   def destroy
-    @sport = Sport.find(params[:id])
+    @sport = Sport.scoped_by_university_id(current_university.id).find(params[:id])
     @sport.destroy
 
     respond_to do |format|

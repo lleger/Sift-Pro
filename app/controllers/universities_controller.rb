@@ -1,27 +1,5 @@
 class UniversitiesController < ApplicationController
   layout :set_layout, only: [:new, :create]
-  
-  # GET /universities
-  # GET /universities.json
-  def index
-    @universities = University.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @universities }
-    end
-  end
-
-  # GET /universities/1
-  # GET /universities/1.json
-  def show
-    @university = University.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @university }
-    end
-  end
 
   # GET /universities/new
   # GET /universities/new.json

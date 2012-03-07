@@ -10,7 +10,7 @@ Siftpro::Application.routes.draw do
   authenticated :user do
     resources :issues, only: [:index, :show]
     resources :sports
-    resources :universities, except: [:new, :create]
+    resources :universities, except: [:new, :create, :index, :show]
     resources :athletes do
       member do
         get "authorize"
