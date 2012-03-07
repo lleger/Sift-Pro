@@ -7,6 +7,12 @@
   <li<%= " class='active'" if current_page?(filter: "all") %>>
       <a href="?filter=all">All</a>
   </li>
+  <li<%= " class='active'" if current_page?(filter: "closed") %>>
+    <a href="?filter=closed">Closed</a>
+  </li>
+  <li<%= " class='active'" if current_page?(filter: "rejected") %>>
+      <a href="?filter=rejected">Rejected</a>
+  </li>
 </ul>
 
 <table class="table table-striped">

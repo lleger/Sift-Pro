@@ -2,7 +2,15 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+    if params[:filter] == "open"
+      @issues = Issue.open
+    elsif params[:filter] == "rejected"
+      @issues = Issue.rejected
+    elsif params[:filter] == "closed"
+      @issues = Issue.closed
+    else
+      @issues = Issue.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,9 +22,9 @@ class IssuesController < ApplicationController
   # GET /issues/1.json
   def show
     @issue = Issue.find(params[:id])
-    @athlete_issues = { open: Issue.where(athlete_id: @issue.athlete_id, response: nil).count, 
-      closed: Issue.where(athlete_id: @issue.athlete_id).where("response is not null").count, 
-      rejected: Issue.where(athlete_id: @issue.athlete_id, approved: false).where("response is not null").count
+    @athlete_issues = { open: Issue.open.where(athlete_id: @issue.athlete_id).count, 
+      closed: Issue.closed.where(athlete_id: @issue.athlete_id).count, 
+      rejected: Issue.rejected.where(athlete_id: @issue.athlete_id).count
       }
 
     respond_to do |format|
