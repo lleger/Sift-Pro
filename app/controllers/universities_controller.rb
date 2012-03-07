@@ -1,4 +1,6 @@
 class UniversitiesController < ApplicationController
+  layout :set_layout, only: [:new, :create]
+  
   # GET /universities
   # GET /universities.json
   def index
@@ -82,5 +84,11 @@ class UniversitiesController < ApplicationController
       format.html { redirect_to universities_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def set_layout
+    "static"
   end
 end

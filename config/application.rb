@@ -58,5 +58,14 @@ module Siftpro
     
     # For Heroku deployment
     config.assets.initialize_on_precompile = false
+    
+    # Make Devise use correct layouts
+    config.to_prepare do
+      Devise::SessionsController.layout "static"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "static" }
+      Devise::ConfirmationsController.layout "static"
+      Devise::UnlocksController.layout "static"            
+      Devise::PasswordsController.layout "static"        
+    end
   end
 end
