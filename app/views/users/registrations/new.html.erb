@@ -1,13 +1,24 @@
+<h2>Sign Up</h2>
+
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal' }) do |f| %>
   <fieldset>
-    <legend>Sign Up</legend>
-
+    <legend>User <small>Details of your account (which will be an admin)</small></legend>
+  
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
   </fieldset>
+
+  <fieldset>
+    <legend>University <small>Details of the university you represent</small></legend>
+    
+    <%= f.simple_fields_for resource.university do |university| %>
+      <%= university.input :name %>
+      <%= university.input :location, hint: "This is the city and state of the university." %>
+    <% end %>
+  </fieldset>
+  
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
 <% end %>
