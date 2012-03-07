@@ -39,6 +39,7 @@
             <li<%= current_class("athletes") %>><%= link_to "Athletes", athletes_path %></li>
             <li<%= current_class("users") %>><%= link_to "Users", "" %></li>
             <li<%= current_class("settings") %>><%= link_to "Settings", "" %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
       </div>
