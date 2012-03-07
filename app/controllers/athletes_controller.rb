@@ -125,5 +125,8 @@ class AthletesController < ApplicationController
     Blacklist.all.each do |naughty|
       @offensive_words << naughty if @tweet =~ Regexp.new(naughty)
     end
+    
+    @issue = Issue.create(tweet: @tweet, blacklisted_words: @offensive_words.join(", "), university_id: 1, athlete_id: params[:id], approved: false)
+    @issue.save
   end
 end

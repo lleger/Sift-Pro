@@ -1,0 +1,35 @@
+<h1>Issues</h1>
+
+<ul class="nav nav-pills">
+  <li<%= " class='active'" if current_page?(filter: "open") || params[:filter].nil? %>>
+    <a href="?filter=open">Open</a>
+  </li>
+  <li<%= " class='active'" if current_page?(filter: "all") %>>
+      <a href="?filter=all">All</a>
+  </li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Athlete</th>
+      <th>Status</th>
+      <th>Response By</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.id %></td>
+        <td><%= issue.athlete.name %></td>
+        <td><%= status_and_icon(issue.status) %></td>
+        <td><%= issue.response.blank? ? "No one" : "User Lastname" %></td>
+        <td>
+          <%= link_to 'View', issue, :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

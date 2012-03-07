@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120306205256) do
+ActiveRecord::Schema.define(:version => 20120307004934) do
 
   create_table "athletes", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20120306205256) do
     t.string   "secret"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "issues", :force => true do |t|
+    t.text     "tweet"
+    t.text     "blacklisted_words"
+    t.integer  "university_id"
+    t.integer  "athlete_id"
+    t.text     "response"
+    t.boolean  "approved"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "sports", :force => true do |t|

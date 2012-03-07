@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tweet: MyText
+  blacklisted_words: MyText
+  univeresity_id: 1
+  athlete_id: 1
+  response: MyText
+  approved: false
+
+two:
+  tweet: MyText
+  blacklisted_words: MyText
+  univeresity_id: 1
+  athlete_id: 1
+  response: MyText
+  approved: false

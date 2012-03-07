@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="span3 sidebar">
+    <div class="well">
+      <p><strong><i class="icon-calendar"></i>Date</strong><br><%= @issue.created_at %></p>
+      <p><strong><i class="icon-user"></i>Athlete</strong><br><span rel="popover" data-content="Current open issues: <%= @athlete_issues[:open] %> <br> All issues: <%= @athlete_issues[:closed] %> <br> Rejected issues: <%= @athlete_issues[:rejected] %>" data-original-title="<%= @issue.athlete.name %>" id="issue_athlete_sidebar"><%= @issue.athlete.name %></span></p>
+      <p><strong><i class="icon-flag"></i>Blacklisted Words</strong><br><%= @issue.blacklisted_words %></p>
+      <p><strong><i class="icon-exclamation-sign"></i>Status</strong><br><%= @issue.status.capitalize %></p>
+    </div>
+  </div>
+  
+  <div class="span9">
+    <div class="page-header">
+      <h1>Issue #<%= @issue.id %></h1>
+    </div>
+    
+    <p>This tweet was flagged for review because of <strong><%= @issue.blacklisted_words.split(" ").count %></strong> blacklisted words. They are highlighted below.</p>
+    
+    <p><blockquote><%= highlight(@issue.tweet, @issue.blacklisted_words.split(", ")) %></blockquote></p>
+    
+    <% if @issue.response.blank? %>
+    
+      <%= simple_form_for @issue, :html => { :class => 'form-horizontal' } do |f| %>
+        <fieldset>
+          <legend>Add a Response</legend>
+
+          <%= f.input :response, cols: 5 %>
+          <%= f.input :approved, label: "Approve", hint: "Leave unchecked to reject tweet." %>
+
+          <div class="form-actions">
+            <%= f.submit "Add Response", :class => 'btn btn-primary' %>
+          </div>
+        </fieldset>
+      <% end %>
+      
+    <% else %>
+        
+        <h2>Response</h2>
+        <p><em>This tweet was <%= status_and_icon(@issue.status) %> on <%= @issue.updated_at %> by User Lastname</em></p>
+        <p><%= @issue.response %></p>
+         
+    <% end %>
+  </div>
+</div>

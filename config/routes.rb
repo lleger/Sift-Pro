@@ -1,4 +1,6 @@
 Siftpro::Application.routes.draw do
+  resources :issues
+
   resources :sports
 
   resources :universities

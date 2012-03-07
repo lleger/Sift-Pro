@@ -24,6 +24,7 @@
           <ul class="nav">
             <li><%= link_to "Universities", universities_path %></li>
             <li><%= link_to "Dashboard", "" %></li>
+            <li><%= link_to "Issues", issues_path %></li>
             <li><%= link_to "Sports", sports_path %></li>
             <li><%= link_to "Athletes", athletes_path %></li>
             <li><%= link_to "Users", "" %></li>
@@ -43,8 +44,7 @@
     <% end %>
     
     <div class="row">
-      <div class="span3"><%= render "layouts/sidebar" %></div>
-      <div class="span9"><%= yield %></div>
+      <div class="span12"><%= yield %></div>
     </div>
     
     <footer>
