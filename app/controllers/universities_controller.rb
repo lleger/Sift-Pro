@@ -25,6 +25,7 @@ class UniversitiesController < ApplicationController
   # GET /universities/new.json
   def new
     @university = University.new
+    @university.users.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +42,8 @@ class UniversitiesController < ApplicationController
   # POST /universities.json
   def create
     @university = University.new(params[:university])
+    
+    @university.users.first.admin = true
 
     respond_to do |format|
       if @university.save

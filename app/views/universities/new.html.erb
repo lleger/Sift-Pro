@@ -1,1 +1,19 @@
-<%= render 'form' %>
+<%= simple_form_for @university, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>University <small>Details of the university you represent</small></legend>
+  
+    <%= f.input :name, :autofocus => true  %>
+    <%= f.input :location, hint: "This is the city and state of the university." %>
+    
+    <%= f.simple_fields_for :users do |user| %>
+    <legend>User <small>Details of your account (which will be an admin)</small></legend>
+      <%= user.input :email, :required => true %>
+      <%= user.input :password, :required => true %>
+      <%= user.input :password_confirmation, :required => true %>
+    <% end %>
+  
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  </fieldset>
+<% end %>

@@ -8,6 +8,4 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   belongs_to :university
-  
-  accepts_nested_attributes_for :university
 end

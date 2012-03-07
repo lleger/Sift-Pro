@@ -1,5 +1,5 @@
 Siftpro::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users
 
   resources :issues
 
@@ -15,6 +15,8 @@ Siftpro::Application.routes.draw do
       post "post"
     end
   end
+  
+  get "/signup" => "universities#new"
 
   root to: "static#home"
 
