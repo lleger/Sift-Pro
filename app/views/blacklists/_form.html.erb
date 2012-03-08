@@ -1,0 +1,12 @@
+<%= simple_form_for @blacklist, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Blacklist</legend>
+
+    <%= f.input :word %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', blacklists_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

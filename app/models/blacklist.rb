@@ -1,4 +1,9 @@
-class Blacklist
+class Blacklist < ActiveRecord::Base
+  belongs_to :university
+  belongs_to :user
+  
+  validates :word, presence: true
+  
   def self.discriminatory
     ["bitch", "bastard", "beaner", "nigger"]
   end
@@ -11,7 +16,7 @@ class Blacklist
     ["cunt", "ax wound", "blow job", "cock", "pussy"]
   end
   
-  def self.all
+  def self.default
     discriminatory + profane + sexual
   end
 end

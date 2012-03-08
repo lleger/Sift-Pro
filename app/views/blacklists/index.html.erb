@@ -1,0 +1,42 @@
+<h1>Blacklists</h1>
+
+<% if @blacklists.present? %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Added by</th>
+      <th>Added on</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @blacklists.each do |blacklist| %>
+      <tr>
+        <td><%= blacklist.word %></td>
+        <td><%= blacklist.user.email %></td>
+        <td><%= blacklist.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_blacklist_path(blacklist), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', blacklist_path(blacklist), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @blacklists %>
+
+<% else %>
+
+<div class="row" id="empty_content_page">
+  <div class="span12 well">
+    <h1>Empty blacklist.</h1>
+    <p>You haven't added any words to the blacklist yet. <%= link_to "Add one now.", new_blacklist_path %></p>
+  </div>
+</div>
+
+<% end %>
+
+<%= link_to 'New Blacklist', new_blacklist_path, class: "btn btn-primary" %>

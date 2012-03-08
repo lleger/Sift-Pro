@@ -18,7 +18,8 @@ Siftpro::Application.routes.draw do
         get "tweet"
         post "post"
       end
-    end    
+    end  
+    resources :blacklists
     root to: "issues#index"
   end
   

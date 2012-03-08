@@ -6,5 +6,5 @@ class ApplicationController < ActionController::Base
   def current_university
     current_user.university
   end
-  helper_method :current_user
+  helper_method :current_university
 end
