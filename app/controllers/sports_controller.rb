@@ -2,7 +2,7 @@ class SportsController < ApplicationController
   # GET /sports
   # GET /sports.json
   def index
-    @sports = Sport.scoped_by_university_id(current_university.id).order("name DESC")
+    @sports = Sport.scoped_by_university_id(current_university.id).order("name ASC")
 
     respond_to do |format|
       format.html # index.html.erb

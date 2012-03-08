@@ -1,5 +1,16 @@
 <h1>Athletes</h1>
 
+<ul class="nav nav-pills">
+  <li<%= " class='active'" if current_page?(filter: "all") || params[:filter].nil? %>>
+      <a href="?filter=all">All</a>
+  </li>
+  <% @sports.each do |sport| %>
+  <li<%= " class='active'" if current_page?(filter: sport.name.downcase) %>>
+    <a href="?filter=<%= sport.name.downcase %>"><%= sport.name.capitalize %></a>
+  </li>  
+  <% end %>
+</ul>
+
 <% if @athletes.present? %>
 
 <table class="table table-striped">

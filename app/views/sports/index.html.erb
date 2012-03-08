@@ -5,16 +5,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Name</th>
+      <th>Number of Athletes</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @sports.each do |sport| %>
       <tr>
-        <td><%= sport.id %></td>
         <td><%= link_to sport.name, sport_path(sport) %></td>
+        <td><%= sport.athletes.count %></td>
         <td>
           <%= link_to 'Edit', edit_sport_path(sport), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', sport_path(sport), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
