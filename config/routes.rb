@@ -1,4 +1,6 @@
 Siftpro::Application.routes.draw do
+  get "dashboard/index"
+
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => "logout" }, :path => ""
 
   resources :universities, only: [:new, :create]
@@ -20,7 +22,7 @@ Siftpro::Application.routes.draw do
       end
     end  
     resources :blacklists, except: :show
-    root to: "issues#index"
+    root to: "dashboard#index"
   end
   
   root to: "static#home"
