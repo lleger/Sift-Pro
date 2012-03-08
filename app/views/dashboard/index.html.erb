@@ -1,17 +1,17 @@
 <div class="row" id="quick_metrics">
   <div class="span4">
     <h3>Tracked Athletes</h3>
-    <p>33<small>in 45 sports</small></p>
+    <p><%= @athletes.count %><small>in <%= @sports.count %> sports</small></p>
   </div>
   
   <div class="span4">
     <h3>Issues Resolved</h3>
-    <p>1435<small>134 this week</small></p>
+    <p><%= @issues.closed.count %><small><%= @issues.closed.this_week.count %> this week</small></p>
   </div>
   
   <div class="span4">
-    <h3>Some metric</h3>
-    <p>Numbers</p>
+    <h3>Open Issues</h3>
+    <p><%= @issues.open.count %><small><%= @issues.open.today.count %> today</small></p>
   </div>
 </div>
 
@@ -22,38 +22,62 @@
         Quick Links
       </li>
       <li>
-        <a href="#">
+        <%= link_to issues_path(filter: "open") do %>
           <i class="icon-book"></i>
-          Library
-        </a>
+          Open Issues
+        <% end %>
+      </li>
+      <li>
+        <%= link_to blacklists_path do %>
+          <i class="icon-ban-circle"></i>
+          Manage Blacklist
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_registration_path(resource) do %>
+          <i class="icon-inbox"></i>
+          User Settings
+        <% end %>
       </li>
     </ul>
   </div>
   
   <div class="span3">
     <h4>Latest Issues</h4>
-    <ul>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-    </ul>
+      <% if @issues.present? %>
+      <ul>
+        <% @issues.order("created_at desc").limit(5).each do |issue| %>
+        <li><%= link_to truncate(issue.tweet, length: 25), issue_path(issue) %></li>
+        <% end %>
+      </ul>
+      <% else %>
+      <em>No open issues.</em>
+      <% end %>
   </div>
   
   <div class="span3">
     <h4>Most Issues by Athlete</h4>
+    <% if @issues.present? %>
     <ul>
-      <li>test1</li>
-      <li>test1</li>
-      <li>test1</li>
+      <% @issues.includes(:athlete).select("issues.*, count(*) as issue_total").group("issues.athlete_id").order("issue_total desc").limit(5).each do |issue| %>
+      <li><%= link_to issue.athlete.name, issue_path(issue) %> (<%= issue.issue_total %>)</li>
+      <% end %>
     </ul>
+    <% else %>
+    <em>No open issues.</em>
+    <% end %>
   </div>
   
   <div class="span3">
     <h4>Most Issues by Sport</h4>
+    <% if @issues.present? %>
     <ul>
-      <li>test2</li>
-      <li>test2</li>
-      <li>test2</li>
+      <% @issues.includes(athlete: :sport).select("issues.*, count(*) as issue_total").group("issues.athlete_id").order("issue_total desc").limit(5).each do |issue| %>
+      <li><%= link_to issue.athlete.sport.name, issue_path(issue) %> (<%= issue.issue_total %>)</li>
+      <% end %>
     </ul>
+    <% else %>
+    <em>No open issues.</em>
+    <% end %>
   </div>
 </div>

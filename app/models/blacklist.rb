@@ -19,4 +19,8 @@ class Blacklist < ActiveRecord::Base
   def self.default
     discriminatory + profane + sexual
   end
+  
+  def self.all_with_default
+    default + all.map(&:word).map(&:downcase)
+  end
 end
