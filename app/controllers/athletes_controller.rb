@@ -3,9 +3,9 @@ class AthletesController < ApplicationController
   # GET /athletes.json
   def index
     @sports = Sport.scoped_by_university_id(current_university.id).order("name ASC")
-    @athletes = Athlete.scoped_by_university_id(current_university.id).order("name ASC")
+    @athletes = Athlete.scoped_by_university_id(current_university.id).order("name ASC").page(params[:page])
     if params[:filter].present? && params[:filter] != "all"
-      @athletes = Athlete.includes(:sport).scoped_by_university_id(current_university.id).where("sports.name like '#{params[:filter]}'").order("athletes.name ASC")
+      @athletes = Athlete.includes(:sport).scoped_by_university_id(current_university.id).where("sports.name like '#{params[:filter]}'").order("athletes.name ASC").page(params[:page])
     end
 
     respond_to do |format|

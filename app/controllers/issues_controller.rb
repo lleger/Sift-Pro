@@ -3,13 +3,13 @@ class IssuesController < ApplicationController
   # GET /issues.json
   def index
     if params[:filter] == "open"
-      @issues = Issue.scoped_by_university_id(current_university.id).open
+      @issues = Issue.scoped_by_university_id(current_university.id).open.page(params[:page])
     elsif params[:filter] == "rejected"
-      @issues = Issue.scoped_by_university_id(current_university.id).rejected
+      @issues = Issue.scoped_by_university_id(current_university.id).rejected.page(params[:page])
     elsif params[:filter] == "closed"
-      @issues = Issue.scoped_by_university_id(current_university.id).closed
+      @issues = Issue.scoped_by_university_id(current_university.id).closed.page(params[:page])
     else
-      @issues = Issue.scoped_by_university_id(current_university.id).all
+      @issues = Issue.scoped_by_university_id(current_university.id).order("created_at desc").page(params[:page])
     end
 
     respond_to do |format|
