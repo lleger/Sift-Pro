@@ -3,13 +3,13 @@
 </div>
 
 <ul class="nav nav-pills">
-  <li<%= " class='active'" if current_page?(filter: "all") || params[:filter].nil? %>>
+  <li<%= " class='active'" if params[:filter] == "all" || params[:filter].nil? %>>
       <a href="?filter=all">All</a>
   </li>
-  <li<%= " class='active'" if current_page?(filter: "default") %>>
+  <li<%= " class='active'" if params[:filter] == "default" %>>
       <a href="?filter=default">Default</a>
   </li>
-  <li<%= " class='active'" if current_page?(filter: "custom") %>>
+  <li<%= " class='active'" if params[:filter] == "custom" %>>
       <a href="?filter=custom">Custom</a>
   </li>
 </ul>
@@ -47,7 +47,7 @@
   </tbody>
 </table>
 
-<% paginate @blacklists %>
+<%= paginate @blacklists %>
 
 <% else %>
 
