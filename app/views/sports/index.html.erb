@@ -1,4 +1,6 @@
-<h1>Sports</h1>
+<div class="page-header">
+  <h1>Sports</h1>
+</div>
 
 <% if @sports.present? %>
 
@@ -13,7 +15,7 @@
   <tbody>
     <% @sports.each do |sport| %>
       <tr>
-        <td><%= link_to sport.name, sport_path(sport) %></td>
+        <td><%= sport.name %></td>
         <td><%= sport.athletes.count %></td>
         <td>
           <%= link_to 'Edit', edit_sport_path(sport), :class => 'btn btn-mini' %>

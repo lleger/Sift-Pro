@@ -9,9 +9,9 @@ Siftpro::Application.routes.draw do
   
   authenticated :user do
     resources :issues, only: [:index, :show]
-    resources :sports
+    resources :sports, except: :show
     resources :universities, except: [:new, :create, :index, :show]
-    resources :athletes do
+    resources :athletes, except: :show do
       member do
         get "authorize"
         get "callback"
@@ -19,7 +19,7 @@ Siftpro::Application.routes.draw do
         post "post"
       end
     end  
-    resources :blacklists
+    resources :blacklists, except: :show
     root to: "issues#index"
   end
   
