@@ -23,8 +23,14 @@
       </li>
       <li>
         <%= link_to issues_path(filter: "open") do %>
-          <i class="icon-book"></i>
+          <i class="icon-inbox"></i>
           Open Issues
+        <% end %>
+      </li>
+      <li>
+        <%= link_to issues_path(filter: "open") do %>
+          <i class="icon-user"></i>
+          Invite Athlete
         <% end %>
       </li>
       <li>
@@ -35,7 +41,7 @@
       </li>
       <li>
         <%= link_to edit_registration_path(resource) do %>
-          <i class="icon-inbox"></i>
+          <i class="icon-cog"></i>
           User Settings
         <% end %>
       </li>
