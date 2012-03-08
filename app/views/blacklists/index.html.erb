@@ -1,5 +1,17 @@
 <h1>Blacklists</h1>
 
+<ul class="nav nav-pills">
+  <li<%= " class='active'" if current_page?(filter: "all") || params[:filter].nil? %>>
+      <a href="?filter=all">All</a>
+  </li>
+  <li<%= " class='active'" if current_page?(filter: "default") %>>
+      <a href="?filter=default">Default</a>
+  </li>
+  <li<%= " class='active'" if current_page?(filter: "custom") %>>
+      <a href="?filter=custom">Custom</a>
+  </li>
+</ul>
+
 <% if @blacklists.present? %>
 
 <table class="table table-striped">
@@ -14,6 +26,7 @@
   <tbody>
     <% @blacklists.each do |blacklist| %>
       <tr>
+        <% if blacklist.respond_to?("persisted?") %>
         <td><%= blacklist.word %></td>
         <td><%= blacklist.user.email %></td>
         <td><%= blacklist.created_at %></td>
@@ -21,12 +34,18 @@
           <%= link_to 'Edit', edit_blacklist_path(blacklist), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', blacklist_path(blacklist), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
         </td>
+        <% else %>
+        <td><%= blacklist %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= paginate @blacklists %>
+<% paginate @blacklists %>
 
 <% else %>
 

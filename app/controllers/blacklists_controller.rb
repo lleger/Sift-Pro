@@ -2,7 +2,14 @@ class BlacklistsController < ApplicationController
   # GET /blacklists
   # GET /blacklists.json
   def index
-    @blacklists = Blacklist.scoped_by_university_id(current_university.id).order("word asc").page(params[:page])
+    if params[:filter] == "all"
+      @blacklists = Blacklist.scoped_by_university_id(1).order("word asc").concat(Blacklist.default)
+      @blacklists = Kaminari.paginate_array(@blacklists.sort { |x,y| (x.is_a?(String) ? x : x.word.downcase) <=> (y.is_a?(String) ? y : y.word.downcase)}).page(params[:page])
+    elsif params[:filter] == "default"
+      @blacklists = Kaminari.paginate_array(Blacklist.default.sort).page(params[:page])
+    else
+      @blacklists = Blacklist.scoped_by_university_id(current_university.id).order("word asc").page(params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
