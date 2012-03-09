@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def authorize_admin
+    if current_user
+      redirect_to root_path unless current_user.admin?
+    else
+      authenticate_user!(force: true)
+    end    
+  end
+  
   def authenticate_inviter!
     # This is a hack
     if current_user

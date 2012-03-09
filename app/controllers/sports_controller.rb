@@ -1,4 +1,6 @@
 class SportsController < ApplicationController
+  before_filter :authorize_admin
+    
   # GET /sports
   # GET /sports.json
   def index

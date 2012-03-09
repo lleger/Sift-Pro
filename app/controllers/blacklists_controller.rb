@@ -1,4 +1,6 @@
 class BlacklistsController < ApplicationController
+  before_filter :authorize_admin
+    
   # GET /blacklists
   # GET /blacklists.json
   def index
