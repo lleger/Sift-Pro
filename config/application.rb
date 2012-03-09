@@ -65,7 +65,8 @@ module Siftpro
       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "static" }
       Devise::ConfirmationsController.layout "static"
       Devise::UnlocksController.layout "static"            
-      Devise::PasswordsController.layout "static"        
+      Devise::PasswordsController.layout "static"
+      Devise::InvitationsController.layout proc{ |controller| user_signed_in? ? "application" : "static" }
     end
   end
 end

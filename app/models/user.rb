@@ -5,9 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :university_id
   
   belongs_to :university
   
   has_many :blacklists
+  has_many :invitations, :class_name => "user", :as => :invited_by
+  
+  def send_reset_password_instructions
+    super if invitation_token.nil?
+  end
 end
