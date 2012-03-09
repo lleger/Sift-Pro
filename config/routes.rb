@@ -21,6 +21,9 @@ Siftpro::Application.routes.draw do
     end  
     resources :blacklists, except: :show
     resources :users, only: [:index, :destroy]
+    get "twitter/authorize"
+    get "twitter/callback"
+    get "twitter/tweet"
     root to: "dashboard#index"
   end
   

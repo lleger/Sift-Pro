@@ -29,7 +29,6 @@
         <td><%= athlete.name %></td>
         <td><%= athlete.sport.name %></td>
         <td>
-          <%= link_to 'Authorize', authorize_athlete_path(athlete), :class => 'btn btn-mini btn-primary' %>
           <%= link_to 'Edit', edit_athlete_path(athlete), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', athlete_path(athlete), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
         </td>
