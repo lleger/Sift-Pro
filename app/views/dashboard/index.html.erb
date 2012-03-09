@@ -66,12 +66,9 @@
   <div class="span3">
     <h4>Most Issues by Athlete</h4>
     <% if @issues.present? %>
-    <ul>
-      orig_cols = OrigPost.column_names.collect {|c| "orig_posts.#{c}"}.join(",")
-      @top_origs = OrigPost.find_by_sql("SELECT #{orig_cols}, count(posts.id) AS post_count FROM orig_posts LEFT OUTER JOIN posts ON posts.orig_post_id = orig_posts.id GROUP BY orig_posts.id, #{orig_cols} ORDER BY post_count DESC LIMIT 5")
-      
-      <% @issues.includes(:athlete).select("issues.*, count(*) as issue_total").group("issues.athlete_id, #{@columns}").order("issue_total desc").limit(5).each do |issue| %>
-      <li><%= link_to issue.athlete.name, issue_path(issue) %> (<%= issue.issue_total %>)</li>
+    <ul>      
+      <% @issues.select("distinct on(issues.athlete_id) issues.*").limit(5).each do |issue| %>
+      <li><%= link_to issue.athlete.name, issue_path(issue) %> (<%= issue.athlete.issues.count %>)</li>
       <% end %>
     </ul>
     <% else %>
@@ -83,8 +80,8 @@
     <h4>Most Issues by Sport</h4>
     <% if @issues.present? %>
     <ul>
-      <% @issues.includes(athlete: :sport).select("issues.*, count(*) as issue_total").group("issues.athlete_id, #{@columns}").order("issue_total desc").limit(5).each do |issue| %>
-      <li><%= link_to issue.athlete.sport.name, issue_path(issue) %> (<%= issue.issue_total %>)</li>
+      <% @issues.includes(athlete: :sport).select("distinct on(athlete.sport_id) issues.*").limit(5).each do |issue| %>
+      <li><%= link_to issue.sport.name, issue_path(issue) %> (<%= issue.athlete.issues.count %>)</li>
       <% end %>
     </ul>
     <% else %>
