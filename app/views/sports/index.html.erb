@@ -16,7 +16,7 @@
     <% @sports.each do |sport| %>
       <tr>
         <td><%= sport.name %></td>
-        <td><%= sport.athletes.count %></td>
+        <td><%= sport.users.count %></td>
         <td>
           <%= link_to 'Edit', edit_sport_path(sport), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', sport_path(sport), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>

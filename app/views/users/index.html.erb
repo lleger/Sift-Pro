@@ -20,9 +20,10 @@
       <td><%= user.email %></td>
       <td><% if user.admin? %><i class="icon-ok"></i><% end %></td>
       <td><% if user.athlete? %><i class="icon-ok"></i><% end %></td>
-      <td><%= user.sport if user.athlete? %></td>
+      <td><%= user.sport.name if user.athlete? %></td>
       <td>
-      <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %>
+      <%= link_to 'Edit', edit_user_path(user), class: "btn btn-mini" if user.athlete? %>
+      <%= link_to 'Destroy', user, class: "btn btn-mini", confirm: 'Are you sure?', method: :delete %>
       </td>
     </tr>
   <% end %>

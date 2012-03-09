@@ -12,7 +12,7 @@ Siftpro::Application.routes.draw do
     resources :sports, except: :show
     resources :universities, except: [:new, :create, :index, :show]
     resources :blacklists, except: :show
-    resources :users, only: [:index, :destroy]
+    resources :users
     scope "twitter" do
       get "authorize" => "twitter#authorize"
       get "callback" => "twitter#callback"

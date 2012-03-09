@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :university_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :university_id, :name, :sport_id
+  
+  scope :admin, where("admin = true")
+  scope :athlete, where("admin = false")
   
   belongs_to :university
-  
   has_many :blacklists
   has_many :invitations, :class_name => "user", :as => :invited_by
   belongs_to :university

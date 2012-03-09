@@ -5,6 +5,10 @@
     <p><%= resource.invited_by.email %> has invited you to join their Sift Pro account. Simply create a password below to get started.</p>
 
     <%= f.input :invitation_token, as: :hidden %>
+    <%= f.input :name %>
+    <% if params[:type] == "athlete" %>
+    <%= f.association :sport %>
+    <% end %>
     <%= f.input :email, :required => true, :autofocus => true, :value => :email %>
     <%= f.input :password, :required => true, %>
     <%= f.input :password_confirmation, :required => true, %>

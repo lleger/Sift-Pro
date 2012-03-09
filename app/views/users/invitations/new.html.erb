@@ -4,6 +4,10 @@
     
     <p>An email will be sent to the address below with instructions on signing up.</p>
     
+    <%= f.input :name %>
+    <% if params[:type] == "athlete" %>
+    <%= f.association :sport %>
+    <% end %>
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.hidden_field(:admin, value: true) if params[:type] == "admin" %>
     <%= f.hidden_field :university_id, value: current_university.id %>

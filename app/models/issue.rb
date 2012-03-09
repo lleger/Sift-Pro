@@ -1,5 +1,6 @@
 class Issue < ActiveRecord::Base
-  belongs_to :athlete
+  belongs_to :athlete, :class_name => "User", :foreign_key => "athlete_id"
+  belongs_to :admin, :class_name => "User", :foreign_key => "admin_id"
   belongs_to :university
   
   scope :open, where("response is null")
