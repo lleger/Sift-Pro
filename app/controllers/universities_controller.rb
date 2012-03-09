@@ -1,5 +1,5 @@
 class UniversitiesController < ApplicationController
-  before_filter :authorize_admin
+  before_filter :authorize_admin, except: [:new, :create]
   layout :set_layout, only: [:new, :create]
 
   # GET /universities/new
