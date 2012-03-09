@@ -38,6 +38,7 @@ class IssuesController < ApplicationController
   # PUT /issues/1.json
   def update
     @issue = Issue.scoped_by_university_id(current_university.id).find(params[:id])
+    @issue.admin = current_user
 
     respond_to do |format|
       if @issue.update_attributes(params[:issue])
