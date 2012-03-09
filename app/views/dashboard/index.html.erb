@@ -81,7 +81,7 @@
     <% if @issues.present? %>
     <ul>
       <% @issues.includes(athlete: :sport).select("distinct on(athlete.sport_id) issues.*").limit(5).each do |issue| %>
-      <li><%= link_to issue.athlete.sport.name, issue_path(issue) %> (<%= issue.athlete.sport.issues.count %>)</li>
+      <li><%= link_to issue.athlete.sport.name, issue_path(issue) %></li>
       <% end %>
     </ul>
     <% else %>
