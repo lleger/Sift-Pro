@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Users</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Admin</th>
+      <th>Athlete</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><% if user.admin? %><i class="icon-ok"></i><% end %></td>
+      <td><% if !user.admin? %><i class="icon-ok"></i><% end %></td>
+      <td>
+      <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>
+
+<%= link_to "Invite Admin", new_user_invitation_path(type: "admin"), class: "btn" %>
+<%= link_to "Invite Athlete", new_user_invitation_path(type: "athlete"), class: "btn" %>

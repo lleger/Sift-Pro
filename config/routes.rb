@@ -20,6 +20,7 @@ Siftpro::Application.routes.draw do
       end
     end  
     resources :blacklists, except: :show
+    resources :users, only: [:index, :destroy]
     root to: "dashboard#index"
   end
   
