@@ -55,7 +55,7 @@ class BlacklistsController < ApplicationController
 
     respond_to do |format|
       if @blacklist.save
-        format.html { redirect_to @blacklist, notice: 'Blacklist was successfully created.' }
+        format.html { redirect_to blacklists_path, notice: 'Blacklist was successfully created.' }
         format.json { render json: @blacklist, status: :created, location: @blacklist }
       else
         format.html { render action: "new" }
