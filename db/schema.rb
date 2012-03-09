@@ -11,19 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308214625) do
-
-  create_table "athletes", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.integer  "sport_id"
-    t.integer  "university_id"
-    t.string   "token"
-    t.string   "secret"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.datetime "remember_created_at"
-  end
+ActiveRecord::Schema.define(:version => 20120309022620) do
 
   create_table "blacklists", :force => true do |t|
     t.string   "word"
@@ -79,6 +67,10 @@ ActiveRecord::Schema.define(:version => 20120308214625) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.string   "name"
+    t.integer  "sport_id"
+    t.string   "token"
+    t.string   "secret"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

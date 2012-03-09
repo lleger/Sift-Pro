@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   
   has_many :blacklists
   has_many :invitations, :class_name => "user", :as => :invited_by
+  belongs_to :university
+  belongs_to :sport
+  has_many :issues
+  
+  def athlete?
+    !admin?
+  end
   
   def connected_twitter?
     token.present? && secret.present?

@@ -11,7 +11,6 @@ Siftpro::Application.routes.draw do
     resources :issues, only: [:index, :show]
     resources :sports, except: :show
     resources :universities, except: [:new, :create, :index, :show]
-    resources :athletes, except: :show
     resources :blacklists, except: :show
     resources :users, only: [:index, :destroy]
     scope "twitter" do
