@@ -35,7 +35,7 @@
     <% elsif @issue.response.present? %>
         
         <h2>Response</h2>
-        <p><em>This tweet was <%= status_and_icon(@issue.status) %> on <%= @issue.updated_at %> by User Lastname</em></p>
+        <p><em>This tweet was <%= status_and_icon(@issue.status) %> on <%= @issue.updated_at %> by <%= @issue.admin.name %></em></p>
         <p><%= @issue.response %></p>
          
     <% end %>

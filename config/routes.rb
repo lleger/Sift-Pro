@@ -8,7 +8,7 @@ Siftpro::Application.routes.draw do
   get "/pricing"  => "static#pricing"
   
   authenticated :user do
-    resources :issues, only: [:index, :show]
+    resources :issues, only: [:index, :show, :update]
     resources :sports, except: :show
     resources :universities, except: [:new, :create, :index, :show]
     resources :blacklists, except: :show

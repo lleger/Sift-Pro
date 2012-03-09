@@ -5,6 +5,17 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.scoped_by_university_id(current_university.id).order("email asc").page(params[:page])
+    @sports = Sport.scoped_by_university_id(current_university.id).order("name ASC")
+    
+    if params[:filter].present?
+      if params[:filter] == "admin"
+        @users = @users.admins
+      elsif params[:filter] == "athlete"
+        @users = @users.athletes
+      elsif params[:filter] != "all"
+        @users = User.includes(:sport).scoped_by_university_id(current_university.id).where("sports.name like '#{params[:filter]}'").order("users.name asc").page(params[:page])
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb

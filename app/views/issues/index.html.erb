@@ -39,7 +39,7 @@
         <td><%= issue.id %></td>
         <td><%= issue.athlete.name %></td>
         <td><%= status_and_icon(issue.status) %></td>
-        <td><%= issue.response.blank? ? "No one" : "User Lastname" %></td>
+        <td><%= issue.response.blank? ? "No one" : issue.admin.name %></td>
         <td>
           <%= link_to 'View', issue, :class => 'btn btn-mini' %>
         </td>

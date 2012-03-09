@@ -2,6 +2,23 @@
   <h1>Users</h1>
 </div>
 
+<ul class="nav nav-pills">
+  <li<%= " class='active'" if current_page?(filter: "all") || params[:filter].nil? %>>
+      <a href="?filter=all">All</a>
+  </li>
+  <li<%= " class='active'" if current_page?(filter: "admin") %>>
+      <a href="?filter=admin">Admins</a>
+  </li>
+  <li<%= " class='active'" if current_page?(filter: "athlete") %>>
+      <a href="?filter=athlete">Athletes</a>
+  </li>
+  <% @sports.each do |sport| %>
+  <li<%= " class='active'" if current_page?(filter: sport.name.downcase) %>>
+    <a href="?filter=<%= sport.name.downcase %>"><%= sport.name.capitalize %></a>
+  </li>  
+  <% end %>
+</ul>
+
 <table class="table table-striped">
   <thead>
     <tr>

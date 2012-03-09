@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :admin, :university_id, :name, :sport_id
   
-  scope :admin, where("admin = true")
-  scope :athlete, where("admin = false")
+  scope :admins, where("admin = true")
+  scope :athletes, where("admin = false")
   
   belongs_to :university
   has_many :blacklists
