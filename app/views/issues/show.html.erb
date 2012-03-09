@@ -13,7 +13,7 @@
       <h1>Issue #<%= @issue.id %></h1>
     </div>
     
-    <p>This tweet was flagged for review because of <strong><%= @issue.blacklisted_words.split(" ").count %></strong> blacklisted words. They are highlighted below.</p>
+    <p>This tweet was flagged for review because of <strong><%= @issue.blacklisted_words.split(", ").count %></strong> blacklisted words. They are highlighted below.</p>
     
     <p><blockquote><%= highlight(@issue.tweet, @issue.blacklisted_words.split(", ")) %></blockquote></p>
     
