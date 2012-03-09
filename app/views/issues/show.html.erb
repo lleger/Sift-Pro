@@ -24,7 +24,7 @@
           <legend>Add a Response</legend>
 
           <%= f.input :response, cols: 5 %>
-          <%= f.input :approved, label: "Approve", hint: "Leave unchecked to reject tweet." %>
+          <%= f.input :approved, label: "Action", collection: [['Approve', true], ["Reject", false]], as: :radio_buttons %>
 
           <div class="form-actions">
             <%= f.submit "Add Response", :class => 'btn btn-primary' %>
