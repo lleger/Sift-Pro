@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   belongs_to :university
   belongs_to :sport
   has_many :issues
+  has_many :athlete_issues, :class_name => "Issue", :foreign_key => "athlete_id"
+  has_many :admin_issues, :class_name => "Issue", :foreign_key => "admin_id"
   
   def athlete?
     !admin?
