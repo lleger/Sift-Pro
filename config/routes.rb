@@ -11,19 +11,15 @@ Siftpro::Application.routes.draw do
     resources :issues, only: [:index, :show]
     resources :sports, except: :show
     resources :universities, except: [:new, :create, :index, :show]
-    resources :athletes, except: :show do
-      member do
-        get "authorize"
-        get "callback"
-        get "tweet"
-        post "post"
-      end
-    end  
+    resources :athletes, except: :show
     resources :blacklists, except: :show
     resources :users, only: [:index, :destroy]
-    get "twitter/authorize"
-    get "twitter/callback"
-    get "twitter/tweet"
+    scope "twitter" do
+      get "authorize" => "twitter#authorize"
+      get "callback" => "twitter#callback"
+      get "tweet" => "twitter#tweet"
+      post "post" => "twitter#post"
+    end
     root to: "dashboard#index"
   end
   

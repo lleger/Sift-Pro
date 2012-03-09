@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   has_many :blacklists
   has_many :invitations, :class_name => "user", :as => :invited_by
   
+  def connected_twitter?
+    token.present? && secret.present?
+  end
+  
   def send_reset_password_instructions
     super if invitation_token.nil?
   end
