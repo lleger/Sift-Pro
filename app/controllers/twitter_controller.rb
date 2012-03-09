@@ -21,32 +21,29 @@ class TwitterController < ApplicationController
       :oauth_verifier => params[:oauth_verifier]
     )
     if client.authorized?
-      @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
-      @athlete.token = access_token.token
-      @athlete.secret = access_token.secret
-      @athlete.save
+      @user = current_user
+      @user.token = access_token.token
+      @user.secret = access_token.secret
+      @user.save
       session[:request_token] = nil
       session[:request_token_secret] = nil
-      redirect_to @athlete, notice: "Authorization success!"
+      redirect_to root_path, notice: "Authorization success!"
     else
       redirect_to edit_registration_path(resource), notice: "Authorization failed."
     end
   end
   
-  def tweet
-    @athlete = Athlete.scoped_by_university_id(current_university.id).find(params[:id])
-  end
-  
   def post
     @tweet = params[:tweet][:text]
-    @offensive_words = Array.new
-    Blacklist.all_with_default.each do |naughty|
-      @offensive_words << naughty if @tweet =~ Regexp.new(naughty)
+    @offensive_words = Blacklist.find_offensive_words(@tweet)
+    
+    if @offensive_words.length > 0
+      @issue = Issue.create(tweet: @tweet, blacklisted_words: @offensive_words.join(", "), university_id: current_university.id, athlete_id: current_user.id, approved: false)
+      @issue.save
+      redirect_to @issue
+    else
+      # actually post tweet here
+      redirect_to root_path, notice: "Tweet posted!"
     end
-    
-    @issue = Issue.create(tweet: @tweet, blacklisted_words: @offensive_words.join(", "), university_id: current_university.id, athlete_id: params[:id], approved: false)
-    @issue.save
-    
-    redirect_to @issue
   end
 end

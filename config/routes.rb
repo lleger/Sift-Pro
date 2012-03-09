@@ -16,7 +16,6 @@ Siftpro::Application.routes.draw do
     scope "twitter" do
       get "authorize" => "twitter#authorize"
       get "callback" => "twitter#callback"
-      get "tweet" => "twitter#tweet"
       post "post" => "twitter#post"
     end
     root to: "dashboard#index"

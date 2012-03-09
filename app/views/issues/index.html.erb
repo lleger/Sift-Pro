@@ -2,6 +2,8 @@
   <h1>Issues</h1>
 </div>
 
+<% if current_user.admin? %>
+
 <ul class="nav nav-pills">
   <li<%= " class='active'" if current_page?(filter: "open") || params[:filter].nil? %>>
     <a href="?filter=open">Open</a>
@@ -16,6 +18,8 @@
       <a href="?filter=rejected">Rejected</a>
   </li>
 </ul>
+
+<% end %>
 
 <% if @issues.present? %>
 

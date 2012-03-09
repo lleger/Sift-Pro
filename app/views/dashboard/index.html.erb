@@ -92,9 +92,9 @@
 
 <% else %>
   
-  <%= simple_form_for :tweet, url: post_athlete_path(@athlete) do |f| %>
-    <%= f.input :text %>
-    <%= f.button :submit %>
+  <%= simple_form_for :tweet, url: post_path do |f| %>
+    <%= f.text_field :text %><br />
+    <%= f.button :submit, "Tweet!" %>
   <% end %>
 
 <% end %>
