@@ -42,12 +42,11 @@ class TwitterController < ApplicationController
       @issue.save
       redirect_to @issue
     else
-      user = User.find_by_email("matsuflex7060@gmail.com")
       client = TwitterOAuth::Client.new(
         consumer_key: TWITTER_CONSUMER_KEY,
         consumer_secret: TWITTER_CONSUMER_SECRET,
-        :token => user.token, 
-        :secret => user.secret
+        :token => current_user.token, 
+        :secret => current_user.secret
       )
       if client.authorized?
         client.update(@tweet)
