@@ -42,8 +42,18 @@ class TwitterController < ApplicationController
       @issue.save
       redirect_to @issue
     else
-      # actually post tweet here
-      redirect_to root_path, notice: "Tweet posted!"
+      client = TwitterOAuth::Client.new(
+        consumer_key: TWITTER_CONSUMER_KEY,
+        consumer_secret: TWITTER_CONSUMER_SECRET,
+        :token => current_user.token, 
+        :secret => current_user.secret
+      )
+      if client.authorized?
+        client.update(@tweet)
+        redirect_to root_path, notice: "Tweet posted!"        
+      else
+        redirect_to authorize_path
+      end
     end
   end
 end
