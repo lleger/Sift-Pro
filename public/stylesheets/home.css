@@ -194,3 +194,8 @@ header[role="banner"] li a:hover {
     margin-top: 3.5em;
     padding-top: 4em;
 }
+
+#vimeo-player {
+  border: 15px solid white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
