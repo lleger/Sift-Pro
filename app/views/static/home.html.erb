@@ -1,24 +1,93 @@
-<% content_for :hero_unit do %>
-<div class="hero-unit">
-  <div class="container">
-    <h1>Keeping bad tweets off the streets, yo.</h1>
-    <p>Sift Pro uses some magic to do some really fantastic things for you, including (but certainly not limited to) making coffee, doing laundry, and filtering the tweets of those irresponsible eighteen-year-old ambassadors of your brand, otherwise known as student athletes.</p>
-    <p><%= link_to "Learn more", features_path, class: "btn btn-large" %>&nbsp;<%= link_to "Sign up", signup_path, class: "btn btn-primary btn-large" %></p>
-  </div>
-</div>
-<% end %>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>SiftPro</title>
 
-<div class="row">
-  <div class="span4">
-    <h2>Why do you need Sift Pro?</h2>
-    <p>Let's face it, what you put on the Internet is there, and like a bad case of herpes, bad tweets are there forever. At Sift Pro we want to keep your Twitter herpes off of your followers' feeds. We understand that the stuff you post on twitter is important to your followers and your reputation. Protect your tweets and your reputation with Sift Pro.</p>
-  </div>
-  <div class="span4">
-    <h2>How does Sift Pro work?</h2>
-    <p>Sift Pro works like your own personal editor by filtering out the bad tweets before they hit your feed. Simply use our app as your twitter client and our intuitive software will alert you when one of your tweets is offensive in some way.</p>
-  </div>
-  <div class="span4">
-    <h2>Who Should Use Sift Pro?</h2>
-    <p>We've designed Sift Pro to help monitor tweets in an easier and more efficient way. Sift Pro is a great way for athletic compliance officers, moms, business owners, and celebrity media handlers to monitor the tweets of their athletes, children, employees, and celebrities.</p>
-  </div>
-</div>
+    <meta content="authenticity_token" name="csrf-param">
+    <meta content="mXjnvWZgMvTXP0mCjvN1mLFPalBNmCj1sbGANAWl6Ek=" name="csrf-token">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/assets/application-f83b4042a63042bef2af4bd80e5f5bf4.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900,400italic,600italic,700italic,900italic|Cardo:400,400italic,700" rel="stylesheet" type="text/css">
+    <link href="/public/stylesheets/home.css" rel="stylesheet" type="text/css">
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <header role="banner">
+        <div class="container">
+            <div class="row">
+                <h1>SiftPro</h1>
+                <nav>
+                    <ul>
+                        <li><a href="mailto:curtis@siftpro.com" title="Send an email using your default email client">Contact</a></li>
+                        <li><a href="/signup">Sign up</a></li>
+                        <li><a href="/login">Log in</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div role="main">
+        <div class="container intro">
+            <div class="row">
+                <div class="shield span6">
+                    <img src="public/images/shield.png" alt="SiftPro shield">
+                </div>
+
+                <section class="span6">
+                    <h2>The old model is <em>broken</em></h2>
+                    <p>Monitoring doesn&rsquo;t work. Reputation-damaging tweets still get out there. Stop them before it happens. SiftPro helps you protect your reputation by stopping tweets before the internet ever sees them. SiftPro is social media compliance and brand protection done right.</p>
+                    <a class="btn btn-large" href="/signup">Sign up</a>
+                    <a class="btn btn-large btn-primary btn-siftpro" href="#video">See how it works</a>
+                </section>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div id="video" class="span10 offset1"></div>
+            </div>
+        </div>
+
+        <section class="container in-summary">
+            <h2>In summary&hellip;</h2>
+
+            <div class="row">
+                <div class="span4">
+                    <h3>Why do you need SiftPro?</h3>
+                    <p>Let&rsquo;s face it, what you put on the internet is there to stay&mdash;for better or worse. We understand that the stuff you post on Twitter is important to your followers and your reputation. Protect your tweets and your reputation with SiftPro.</p>
+                </div>
+
+                <div class="span4">
+                    <h3>How does SiftPro work?</h3>
+                    <p>SiftPro works like your own personal editor by filtering out the bad tweets before they hit your feed. Simply use our app as your Twitter client and our intuitive software will alert you when one of your tweets is offensive in some way.</p>
+                </div>
+
+                <div class="span4">
+                    <h3>Who Should Use SiftPro?</h3>
+                    <p>We&rsquo;ve designed SiftPro to help monitor tweets in an easier and more efficient way. SiftPro is a great way for athletic compliance officers, moms, business owners, and celebrity media handlers to monitor the tweets of their athletes, children, employees, and celebrities.</p>
+                </div>
+            </div>
+
+            <p class="talk-more">Still not convinced? Have more questions? Email us at <a class="not-convinced" href="mailto:curtis@siftpro.com" title="Send an email using your default email client">team@siftpro.com</a> and let&rsquo;s talk!</p>
+        </section>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2012 SiftPro</p>
+        </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://siftpro.com/assets/application-f3056a6d159cb3b0cb844d0bc3f4308f.js"></script>
+    <script src="/public/javascripts/home.js"></script>
+</body>
+</html>
