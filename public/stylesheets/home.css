@@ -1,0 +1,196 @@
+/**
+ * Homepage styles
+ *
+ * @project SiftPro Website
+ * @package html-css
+ * @cssdoc version 1.0-pre
+ * @author Nicholas Scheurich <nick@scheurich.me>
+ * @copyright 2012 SiftPro
+ */
+
+.navbar {
+    display: none;
+}
+
+.btn-siftpro,
+.btn-siftpro:hover  {
+    background-color: #ef3f36;
+    background-image:-moz-linear-gradient(top, #ef3f36, #c62921);
+    background-image:-ms-linear-gradient(top, #ef3f36, #c62921);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#ef3f36), to(#c62921));
+    background-image:-webkit-linear-gradient(top, #ef3f36, #c62921);
+    background-image:-o-linear-gradient(top, #ef3f36, #c62921);
+    background-image:linear-gradient(top, #ef3f36, #c62921);
+    background-repeat:repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='ie-hex-str(##ef3f36)', endColorstr='ie-hex-str(##c62921)', GradientType=0);
+    border-color: #e1352c #c62921 #a91d16;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) fadein(rgba(0,0,0,0.1), 15%);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    color: #fff;
+    opacity: 0.99;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+.btn-siftpro:hover {
+  background-position: 0 0;
+  opacity: 0.9;
+  font-weight: inherit;
+}
+
+html {
+    background: url("../images/fabric.png");
+}
+
+body {
+    background: rgba(255,255,255,0.3);
+    border-top: 6px solid #2a2a2a;
+    color: #555;
+    color: rgba(0,0,0,0.65);
+    padding-top: 0;
+}
+
+a {
+    color: #EF4C20;
+}
+
+a:hover {
+    color: #c62921;
+}
+
+p {
+    font: 16px/1.5 "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
+h2 {
+    font-family: "Source Sans Pro", Georgia, Times, serif;
+    font-size: 24px;
+}
+
+header[role="banner"] {
+    background: rgba(0,0,0,0.05);
+    border-top: 4px solid #555;
+    margin-bottom: 5em;
+    padding: 2em 0;
+}
+
+header[role="banner"] h1 {
+    background: url("../images/siftpro.png");
+    float: left;
+    margin-left: 30px;
+    text-indent: -9999em;
+    width: 140px;
+    height: 43px;
+}
+
+header[role="banner"] ul {
+    float: right;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header[role="banner"] li {
+    float: left;
+    margin-left: 1em;
+}
+
+header[role="banner"] li a {
+    color: #666;
+    font-family: "Source Sans Pro", Georgia, Times, serif;
+    font-weight: bold;
+    line-height: 43px;
+    text-transform: uppercase;
+}
+
+header[role="banner"] li a:hover {
+    color: #333;
+    border-bottom: 3px solid #EF4C20;
+    text-decoration: none;
+}
+
+.intro  {
+    margin-bottom: 10em;
+}
+
+.intro section {
+    margin-top: 3em;
+}
+
+.intro h2 {
+    font-family: "Source Sans Pro", Georgia, Times, serif;
+    font-size: 40px;
+    margin-bottom: 0.2em;
+}
+
+.intro h2 em {
+    font-style: normal;
+    color: #EF4C20;
+}
+
+.intro p {
+    font-family: "Source Sans Pro", Georgia, Times, serif;
+    font-size: 20px;
+}
+
+.shield img {
+    display: block;
+    margin: 0 auto 2em;
+    width: 75%;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .shield img {
+        width: 97%;
+    }
+}
+
+@media (max-width: 488px) {
+    header[role="banner"] h1 {
+        float: none;
+        margin: 0 0 0.5em;
+    }
+
+    header[role="banner"] ul {
+        float: none;
+    }
+}
+
+.in-summary {
+    margin-top: 12em;
+}
+
+.in-summary h2 {
+    background: url("../images/in-summary2.png") center no-repeat;
+    margin-bottom: 3em;
+    text-indent: -9999em;
+    height: 42px;
+}
+
+.in-summary h3 {
+    border-bottom: 5px solid #EF4C20;
+    float: left;
+    margin-bottom: 0.5em;
+}
+
+.in-summary p {
+    clear: left;
+}
+
+.in-summary .talk-more {
+    margin: 5em 0;
+    text-align: center;
+}
+
+.test img {
+    width: 100%;
+}
+
+.alt .intro  {
+    margin-bottom: 0;
+}
+
+.alt .in-summary {
+    background: url("../images/get-to-know.png") center top no-repeat;
+    margin-top: 3.5em;
+    padding-top: 4em;
+}
