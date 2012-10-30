@@ -1,24 +1,43 @@
-<% content_for :hero_unit do %>
-<div class="hero-unit">
-  <div class="container">
-    <h1>Keeping bad tweets off the streets, yo.</h1>
-    <p>Sift Pro uses some magic to do some really fantastic things for you, including (but certainly not limited to) making coffee, doing laundry, and filtering the tweets of those irresponsible eighteen-year-old ambassadors of your brand, otherwise known as student athletes.</p>
-    <p><%= link_to "Learn more", features_path, class: "btn btn-large" %>&nbsp;<%= link_to "Sign up", signup_path, class: "btn btn-primary btn-large" %></p>
-  </div>
-</div>
-<% end %>
+<div class="container intro">
+    <div class="row">
+        <div class="shield span6">
+						<%= image_tag "shield.png", title: "SiftPro shield" %>
+        </div>
 
-<div class="row">
-  <div class="span4">
-    <h2>Why do you need Sift Pro?</h2>
-    <p>Let's face it, what you put on the Internet is there, and like a bad case of herpes, bad tweets are there forever. At Sift Pro we want to keep your Twitter herpes off of your followers' feeds. We understand that the stuff you post on twitter is important to your followers and your reputation. Protect your tweets and your reputation with Sift Pro.</p>
-  </div>
-  <div class="span4">
-    <h2>How does Sift Pro work?</h2>
-    <p>Sift Pro works like your own personal editor by filtering out the bad tweets before they hit your feed. Simply use our app as your twitter client and our intuitive software will alert you when one of your tweets is offensive in some way.</p>
-  </div>
-  <div class="span4">
-    <h2>Who Should Use Sift Pro?</h2>
-    <p>We've designed Sift Pro to help monitor tweets in an easier and more efficient way. Sift Pro is a great way for athletic compliance officers, moms, business owners, and celebrity media handlers to monitor the tweets of their athletes, children, employees, and celebrities.</p>
-  </div>
+        <section class="span6">
+            <h2>The old model is <em>broken</em></h2>
+            <p>Monitoring doesn&rsquo;t work. Reputation-damaging tweets still get out there. Stop them before it happens. SiftPro helps you protect your reputation by stopping tweets before the internet ever sees them. SiftPro is social media compliance and brand protection done right.</p>
+            <a class="btn btn-large" href="/signup">Sign up</a>
+            <a class="btn btn-large btn-primary btn-siftpro" href="#video">See how it works</a>
+        </section>
+    </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div id="video" class="span10 offset1"></div>
+    </div>
+</div>
+
+<section class="container in-summary">
+    <h2>In summary&hellip;</h2>
+
+    <div class="row">
+        <div class="span4">
+            <h3>Why do you need SiftPro?</h3>
+            <p>Let&rsquo;s face it, what you put on the internet is there to stay&mdash;for better or worse. We understand that the stuff you post on Twitter is important to your followers and your reputation. Protect your tweets and your reputation with SiftPro.</p>
+        </div>
+
+        <div class="span4">
+            <h3>How does SiftPro work?</h3>
+            <p>SiftPro works like your own personal editor by filtering out the bad tweets before they hit your feed. Simply use our app as your Twitter client and our intuitive software will alert you when one of your tweets is offensive in some way.</p>
+        </div>
+
+        <div class="span4">
+            <h3>Who Should Use SiftPro?</h3>
+            <p>We&rsquo;ve designed SiftPro to help monitor tweets in an easier and more efficient way. SiftPro is a great way for athletic compliance officers, moms, business owners, and celebrity media handlers to monitor the tweets of their athletes, children, employees, and celebrities.</p>
+        </div>
+    </div>
+
+    <p class="talk-more">Still not convinced? Have more questions? Email us at <a class="not-convinced" href="mailto:cheroma@siftpro.com" title="Send an email using your default email client">cheroma@siftpro.com</a> and let&rsquo;s talk!</p>
+</section>
