@@ -44,14 +44,13 @@ class TwitterController < ApplicationController
     else
       client = TwitterOAuth::Client.new(
         consumer_key: TWITTER_CONSUMER_KEY,
-        consumer_secret: TWITTER_CONSUMER_SECRET
-      )
-      client.authorize(
-        current_user.token,
-        current_user.secret
+        consumer_secret: TWITTER_CONSUMER_SECRET,
+        :token => current_user.token, 
+        :secret => current_user.secret
       )
       if client.authorized?
-        client.post(@tweet)
+        client.update(@tweet)
+        redirect_to root_path, notice: "Tweet posted!"        
       else
         redirect_to authorize_path
       end
